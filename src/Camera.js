@@ -4,29 +4,20 @@ import 'react-html5-camera-photo/build/css/index.css';
 import axios from 'axios'
 class App extends Component {
 
-    state = {
-        dataUri: ''
-    }
-
-    onTakePhoto (dataUri) {
-        // alert("belum bisa di setting ulang")
-        this.setState({
-            dataUri: dataUri
-        })
+    onTakePhoto (data_uri) {
         
-        
-        const url = "https://sipss-api.online/"
+        const url = "http://0.0.0.0:5000/build"
         // console.log(dataUri)
 
         const body = {
-            dataUri: dataUri
+            data_uri: data_uri
         }
+        console.log(data_uri)
         axios
-        // .post(url, body)
-        .get(url) 
+        .post(url, body)
         .then((response) => {
-            alert('message ', response.data.message)
-            console.log("Response data: ", response.data.message)
+            alert('message ', response.data)
+            console.log("Response data: ", response.data)
         })
         .catch((err) => {
             alert(err)

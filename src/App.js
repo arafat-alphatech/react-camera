@@ -1,25 +1,47 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Camera from './Camera'
+import axios from 'axios'
 
 class App extends Component {
+  
+  state = {
+    displayScanner: false
+  }
+
+  showScanner(){
+    this.setState({
+      displayScanner: !this.state.displayScanner
+    })
+  }
+
+  uye = () => {
+    axios
+    .get("https://sipss-api.online/")
+    .then((value) => {
+        alert('uyee berhasil hit ke API...')
+    })
+    .catch((err) => {
+        alert(err)
+    })
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {
+         this.state.displayScanner ?  
+          <div style={{width: 200, textAlign: 'center'}}>
+              {/* <Qrscanner/> */}
+              <Camera/>
+              {/* <RearCamera/> */}
+              <hr/> 
+          </div>
+          :
+          ""
+        }
+        <button onClick={() => this.showScanner()}>click me </button>
+        <button onClick={() => this.uye()}>uyee</button>
+
       </div>
     );
   }

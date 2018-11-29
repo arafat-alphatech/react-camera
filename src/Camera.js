@@ -135,7 +135,7 @@ class App extends Component {
 
     onTakePhoto (data_uri) {
         
-        const url = "http://0.0.0.0:5000/build"
+        const url = "https://sipss-api.online/build"
 
         const body = {
             data_uri: data_uri

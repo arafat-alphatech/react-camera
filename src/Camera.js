@@ -16,7 +16,7 @@ class App extends Component {
         .post(url, body)
         .then((response) => {
 
-            alert('Codes: ' + response.codes + ", Answer: " + response.answer)
+            alert('Codes: ' + response.data.codes + ", Answer: " + response.data.answer)
             console.log("Response data: ", response.data)
         })
         .catch((err) => {

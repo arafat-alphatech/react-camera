@@ -6,8 +6,7 @@ class App extends Component {
 
     onTakePhoto (data_uri) {
         
-        const url = "http://0.0.0.0:5000/build"
-        // console.log(dataUri)
+        const url = "https://sipss-api.online/build"
 
         const body = {
             data_uri: data_uri
@@ -16,7 +15,8 @@ class App extends Component {
         axios
         .post(url, body)
         .then((response) => {
-            alert('message ', response.data)
+
+            alert('Codes: ' + response.codes + ", Answer: " + response.answer)
             console.log("Response data: ", response.data)
         })
         .catch((err) => {
